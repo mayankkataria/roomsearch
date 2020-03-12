@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>signup</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="{% static 'images/roomsearch.png' %}" class="brand_logo" alt="Logo">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form class="needs-validation" method="POST" novalidate>
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col input-group mb-3 mt-2">
+                  <input type="text" name="" class="form-control input_name" value="" placeholder="Full Name" required>
+                  <div class="invalid-feedback">
+                    Please provide your full name.
+                  </div>
+                </div>
+                <div class="col input-group mb-3 mt-2">
+                  <input type="phone" name="" class="form-control input_phone" value="" placeholder="Phone Number" required>
+                  <div class="invalid-feedback">
+                    Please provide your Phone number.
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col input-group mb-3 mt-2">
+                  <label for=""></label>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">Role</span>
+                  </div>
+                  <select class="custom-select" required>
+                    <option value="manager">Manager</option>
+                    <option value="customer">Customer</option>
+                  </select>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col input-group mb-3 mt-2">
+                  <input type="email" name="" class="form-control input_email" value="" placeholder="Email" required>
+                  <div class="invalid-feedback">
+                    Please provide your email address.
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col input-group mb-3 mt-2">
+                  <input type="password" name="" class="form-control input_pass" value="" placeholder="Password" required>
+                  <div class="invalid-feedback">
+                    Please provide your Password.
+                  </div>
+                </div>
+                <div class="col input-group mb-3 mt-2">
+                  <input type="password" name="" class="form-control input_repass" value="" placeholder="Repeat Password" required>
+                  <div class="invalid-feedback">
+                    Please repeat the password.
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center mt-3 signup_container">
+                <button type="submit" name="button" class="btn signup_btn">Sign Up</button>
+             </div>
+           </form>
+          </div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+
+</body>
+</html>

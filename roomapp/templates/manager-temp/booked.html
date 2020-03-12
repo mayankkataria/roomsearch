@@ -1,0 +1,97 @@
+{% extends 'manager-temp/manager-basic.html' %}
+{% block script %}
+<script>
+  $(document).ready(function(){
+    $(".active").removeClass("active");
+    $("#link-booked").addClass("active");
+ });
+
+ $('.collapse').on('show.bs.collapse', function () {
+  $(this).siblings('.occupanciesdd').addClass('active');
+});
+
+$('.collapse').on('hide.bs.collapse', function () {
+  $(this).siblings('.occupanciesdd').removeClass('active');
+});
+</script>
+{% endblock %}
+
+    {% block title %} Index {% endblock %}
+    {% block css %}
+      <style>
+        .span:after {
+          font-family: 'Glyphicons Halflings';
+          content: "\e114";
+          float: right;
+          transition: all 0.5s;
+          margin-left: 6px;
+          font-weight: light;
+       }
+       .occupanciesdd.active .span:after {
+         -webkit-transform: rotate(180deg);
+         -moz-transform: rotate(180deg);
+         transform: rotate(180deg);
+       } 
+      </style>
+    {% endblock %}
+
+{% block body %}
+<h1 class="m-3">Booked Rooms</h1>
+<div class="list-group m-3">
+    <li href="#" class="list-group-item">
+      <h5 class="mb-1">Name: <a href="#" style="color: black; font-weight:600;" data-toggle="modal" data-target="#exampleModalCenter">Mayank Kataria</a></h5>
+      <h5 class="mb-1">Room No: 500</h5>
+      <h5 class="mb-1">Date: 12/12/14</h5>
+      <h5 class="mb-1">Time Slot: 12pm - 6pm</h5>
+        <div class="occupanciesdd d-inline-flex">
+          <a class="occupancieslink" href="#" style="color: black; font-weight:375;text-decoration: none;"
+          data-toggle="collapse" data-target="#occ1"><h5 class="span">Occupancies: 2</h5></a>
+        </div>
+        <div id="occ1" class="collapse">
+          <h5>
+            <div> John Cena </div>
+            <div> John Doe </div>
+          </h5>
+        </div>
+    </li>
+    <li href="#" class="list-group-item">
+      <h5 class="mb-1">Name: <a href="#" style="color: black; font-weight:600;" data-toggle="modal" data-target="#exampleModalCenter">Mayank Kataria</a></h5>
+      <h5 class="mb-1">Room No: 500</h5>
+      <h5 class="mb-1">Date: 12/12/14</h5>
+      <h5 class="mb-1">Time Slot: 12pm - 6pm</h5>
+        <div class="occupanciesdd d-inline-flex">
+          <a class="occupancieslink" href="#" style="color: black; font-weight:375;text-decoration: none;"
+          data-toggle="collapse" data-target="#occ2"><h5 class="span">Occupancies: 2</h5></a>
+        </div>
+        <div id="occ2" class="collapse">
+          <h5>
+            <div> John Cena </div>
+            <div> John Doe </div>
+          </h5>
+        </div>
+    </li>
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Customer Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Name: Mayank Kataria</h6>
+        <h6>Phone: +91 9079272823</h6>
+        <h6>Email: mynkkataria@gmail.com</h6>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'manager-temp/manager-basic.html' %}
+{% block script %}
+<script>
+$(document).ready(function(){
+    $(".active").removeClass("active");
+    $("#link-available").addClass("active");
+ });
+</script>
+{% endblock %}
+
+    {% block title %} Index {% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+{% block body %}
+<h1 class="m-3">Available Rooms</h1>
+<button type="button" class="btn btn-dark m-3">Add Room</button>
+<br>
+<div class="list-group m-3">
+    <a href="#" class="list-group-item list-group-item-action active">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Room No: 203</h5>
+        <small>Click to edit</small>
+      </div>
+      <p class="mb-1">Time Slot: 9am - 3pm</p>
+      <p class="mb-1">Advance: 3 days</p>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action active">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Room No: 203</h5>
+          <small>Click to edit</small>
+        </div>
+        <p class="mb-1">Time Slot: 9am - 3pm</p>
+        <p class="mb-1">Advance: 3 days</p>
+    </a>
+</div>
+{% endblock %}

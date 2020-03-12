@@ -1,0 +1,73 @@
+{% extends 'customer-temp/customer-basic.html' %}
+{% block script %}
+<script>
+$(document).ready(function(){
+    $(".active").removeClass("active");
+    $("#link-rooms").addClass("active");
+ });
+</script>
+{% endblock %}
+
+    {% block title %} Index {% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+{% block body %}
+<h1 class="m-3">Available Rooms</h1>
+<br>
+<div class="list-group m-3">
+    <a href="#" data-toggle="modal" data-target="#bookModal" class="list-group-item list-group-item-action active">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Room No: 203</h5>
+        <small>Click to book</small>
+      </div>
+      <p class="mb-1">Time Slot: 9am - 3pm</p>
+      <p class="mb-1">Advance: 3 days</p>
+    </a>
+    <a href="#" data-toggle="modal" data-target="#bookModal" class="list-group-item list-group-item-action active">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Room No: 203</h5>
+        <small>Click to book</small>
+      </div>
+      <p class="mb-1">Time Slot: 9am - 3pm</p>
+      <p class="mb-1">Advance: 3 days</p>
+    </a>
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookModalTitle">Fill Booking Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>
+          <form>
+            <div class="form-group row">
+              <label for="inputDate" class="col-sm-2 col-form-label">Book Date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="inputDate">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputNoOfOcc" class="col-sm-2 col-form-label">Number of Occupants</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="inputNoOfOcc">
+              </div>
+            </div>
+          </form>
+        </h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Book</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
