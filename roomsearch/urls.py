@@ -19,8 +19,7 @@ from roomapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('manager/', include('manager.urls')),
-    # path('customer/', include('customer.urls')),
+    path('test/', views.test, name='test'),
     # common
     path('', views.login, name='login'),
     path('signup/', views.signup, name='signup'),

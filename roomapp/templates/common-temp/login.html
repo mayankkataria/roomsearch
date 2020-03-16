@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 </head>
-<!--Coded with love by Mutiullah Samim-->
 <body>
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
@@ -20,18 +19,54 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form>
+					<form class="needs-validation" action="" method="POST" novalidate> {% csrf_token %}
+						<div class = "error-msg mb-1">
+							{% if form.errors %}
+								{% for field in form %}
+									{% if forloop.index == 0 %}
+										
+										{% for error in field.errors %}
+											{{field.errors}}
+											{% if loop.index == 0 %}
+												<div class="alert alert-danger">
+													<strong>{{ error|escape }}</strong>
+												</div>
+											{% endif %}
+										{% endfor %}
+									{% endif %}
+								{% endfor %}
+								<!-- {% for error in form.errors %}
+									<div class="alert alert-danger">
+										<strong>{{ error|escape }}</strong>
+									</div>
+								{% endfor %} -->
+							{% elif messages %}
+								{% for message in messages %}
+									{% if forloop.last %}
+										<div class="alert alert-danger">
+											<strong>{{ message|escape }}</strong>
+										</div>
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="" class="form-control input_user" value="" placeholder="Email">
+							<input type="email" name="email" class="form-control input_email" value="" placeholder="Email" required>
+							<div class="invalid-feedback">
+								Please provide your valid email.
+							</div>
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="" class="form-control input_pass" value="" placeholder="Password">
+							<input type="password" name="password" class="form-control input_pass" value="" placeholder="Password" required>
+							<div class="invalid-feedback">
+								Please enter password.
+							</div>
 						</div>
 						<div class="form-group">
 							<div class="custom-control custom-checkbox">
@@ -39,9 +74,9 @@
 								<label class="custom-control-label" for="customControlInline">Remember me</label>
 							</div>
 						</div>
-							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<button type="button" name="button" class="btn login_btn">Login</button>
-				   </div>
+						<div class="d-flex justify-content-center mt-3 login_container">
+							<button type="submit" name="button" class="btn login_btn">Login</button>
+						</div>
 					</form>
 				</div>
 		
@@ -56,5 +91,26 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		(function() {
+		  'use strict';
+		  window.addEventListener('load', function() {
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.getElementsByClassName('needs-validation');
+			// Loop over them and prevent submission
+			var validation = Array.prototype.filter.call(forms, function(form) {
+			  form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+				  event.preventDefault();
+				  event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			  }, false);
+			});
+		  }, false);
+		})();
+	  </script>
+
 </body>
 </html>
